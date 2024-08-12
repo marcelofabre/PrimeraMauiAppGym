@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PrimeraMauiApp.Pages.ejerciciosPage"
+             Title="Ejercicios">
+    <ScrollView>
+    <VerticalStackLayout>
+        <Label 
+            Text="Lista de Ejercicios"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Button x:Name="btnVolver"
+                Text="Volver"
+                FontSize="Large"
+                Clicked="btnVolver_Clicked"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"/>
+
+            <CollectionView x:Name="CollectionLibros"
+                            SelectionMode="Single"
+                            SelectedItems="{Binding libroSeleccionado}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="*,2*" RowDefinitions="*,*,2*">
+                            <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" HeightRequest="250" Source="{Binding portadaUrl}"/>
+                            <Label Grid.Row="0" Grid.Column="1" FontSize="Title" Text="{Binding nombre}"/>
+                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding descripcion}"/>
+                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding numerodeseries}"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
